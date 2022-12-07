@@ -7,7 +7,7 @@ const Input = (props) => {
   const [field] = useField(name);
 
   return (
-    <Grid container direction="column">
+    <Grid container direction="column" gap={2}>
       <FormLabel component="legend">{label}</FormLabel>
       <Field {...field} {...rest} as={TextField} />
       <ErrorMessage name={name} component={TextError} />

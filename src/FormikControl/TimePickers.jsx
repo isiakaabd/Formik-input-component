@@ -26,7 +26,7 @@ const TimePickers = (props) => {
   const { name, label, ...rest } = props;
   const [field] = useField(name);
   return (
-    <Grid container direction="column" gap={1}>
+    <Grid container direction="column" gap={2}>
       <FormLabel>{label}</FormLabel>
       <Field as={Times} {...field} {...rest} />
       <ErrorMessage name={name} component={TextError} />

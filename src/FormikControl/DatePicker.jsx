@@ -27,7 +27,7 @@ const DatePickers = (props) => {
   const { name, label, ...rest } = props;
   const [field] = useField(name);
   return (
-    <Grid container direction="column" gap={1}>
+    <Grid container direction="column" gap={2}>
       <FormLabel>{label}</FormLabel>
       <Field as={Dates} {...field} {...rest} />
       <ErrorMessage name={name} component={TextError} />

@@ -14,7 +14,7 @@ EmptyTextarea.propTypes = {
 const TextArea = ({ label, name, ...rest }) => {
   const [field] = useField(name);
   return (
-    <Grid container direction="column" gap={1}>
+    <Grid container direction="column" gap={2}>
       <FormLabel component="legend">{label}</FormLabel>
       <Field {...field} as={EmptyTextarea} {...rest} />
       <ErrorMessage name={name} component={TextError} />

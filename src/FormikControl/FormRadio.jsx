@@ -13,11 +13,10 @@ const FormRadio = ({ label, name, options, ...rest }) => {
       <FormLabel>{label}</FormLabel>
       <Grid item container justifyContent="space-between">
         {options.map((option, index) => (
-          <Grid item>
+          <Grid item key={index}>
             <MyRadio
               type="radio"
               name={name}
-              key={`${index - option.value}`}
               label={option.key}
               value={option.value}
               as={MyRadio}

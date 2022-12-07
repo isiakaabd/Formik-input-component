@@ -1,7 +1,7 @@
 import { Form, Formik } from "formik";
 import { Grid, Typography, Button, Paper } from "@mui/material";
 import FormikControl from "./FormikControl/FormikControl";
-import * as Yup from "yup";
+import * as Yup from "Yup";
 import dayjs from "dayjs";
 const App = () => {
   const validationSchema = Yup.object({
@@ -11,6 +11,11 @@ const App = () => {
     description: Yup.string("Enter your description").notRequired(),
     date: Yup.date("Enter date").required("Date is required"),
     radio: Yup.string().required("Sport is required"),
+    email: Yup.string("Enter you Email").email().required("Email is required"),
+    food: Yup.array()
+      .min(1)
+      .of(Yup.string().required("select at least one food"))
+      .required("select atleast one food"),
   });
   const date = dayjs("2022-04-07");
   const time = dayjs("2022-08-18T21:11:54");
@@ -24,11 +29,12 @@ const App = () => {
           initialValues={{
             FullName: "",
             country: "",
-            gender: 0,
+            gender: "",
             description: "",
             date,
             radio: "",
             time,
+            food: [],
           }}
           validationSchema={validationSchema}
           onSubmit={(values) => console.log(values)}
@@ -48,10 +54,10 @@ const App = () => {
                 <Grid item md={6} xs={12}>
                   <FormikControl
                     control="input"
-                    label="Country"
-                    id="country"
-                    name="country"
-                    placeholder="Enter your Country"
+                    label="Email"
+                    id="email"
+                    name="email"
+                    placeholder="Enter your Email Address"
                   />
                 </Grid>
               </Grid>
@@ -68,8 +74,9 @@ const App = () => {
                     id="gender"
                     placeholder="Select a gender"
                     options={[
-                      { key: "Male", value: 0 },
-                      { key: "Female", value: 1 },
+                      { key: "Gender", value: "" },
+                      { key: "Male", value: "Male" },
+                      { key: "Female", value: "Female" },
                     ]}
                     name="gender"
                   />
@@ -84,7 +91,7 @@ const App = () => {
                   />
                 </Grid>
               </Grid>
-              <Grid item container>
+              <Grid item container gap={2}>
                 <FormikControl
                   control="textarea"
                   label="Description"
@@ -122,10 +129,53 @@ const App = () => {
                     name="time"
                   />
                 </Grid>
+                <Grid item md={6} xs={12}>
+                  <FormikControl
+                    control="input"
+                    label="Country"
+                    id="country"
+                    name="country"
+                    placeholder="Enter your Country"
+                  />
+                </Grid>
+              </Grid>
+              <Grid item container gap={2} flexWrap="nowrap">
+                <FormikControl
+                  control="checkbox"
+                  name="food"
+                  value="Rice"
+                  label="Rice"
+                />
+                <FormikControl
+                  control="checkbox"
+                  name="food"
+                  label="Beans"
+                  value="Beans"
+                />
+                <FormikControl
+                  control="checkbox"
+                  name="food"
+                  value="Yam"
+                  label="Yam"
+                />
               </Grid>
             </Grid>
 
-            <Button type="submit">Submit</Button>
+            <Button
+              sx={{
+                mt: 3,
+                background: "blue",
+                color: "#fff",
+                padding: "1em 1.2em",
+                "&:hover": {
+                  color: "#fff",
+                  background: "blue",
+                },
+              }}
+              type="submit"
+            >
+              Submit
+            </Button>
           </Form>
         </Formik>
       </Paper>
