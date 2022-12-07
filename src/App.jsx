@@ -1,7 +1,7 @@
 import { Form, Formik } from "formik";
 import { Grid, Typography, Button, Paper } from "@mui/material";
 import FormikControl from "./FormikControl/FormikControl";
-import * as Yup from "Yup";
+import * as Yup from "yup";
 import dayjs from "dayjs";
 const App = () => {
   const validationSchema = Yup.object({
