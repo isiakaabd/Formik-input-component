@@ -29,7 +29,10 @@ import { Grid, Typography, Button, Paper } from "@mui/material";
 import FormikControl from "./FormikControl/FormikControl";
 import * as Yup from "yup";
 import dayjs from "dayjs";
+
 const App = () => {
+
+
   const validationSchema = Yup.object({
     FullName: Yup.string("Enter your Name").required("name is required"),
     country: Yup.string("Enter your Country").required("country is required"),
@@ -43,6 +46,9 @@ const App = () => {
       .of(Yup.string().required("select at least one food"))
       .required("select atleast one food"),
   });
+  
+  
+  
   const date = dayjs("2022-04-07");
   const time = dayjs("2022-08-18T21:11:54");
   return (
@@ -77,6 +83,7 @@ const App = () => {
                     placeholder="Enter your FullName"
                   />
                 </Grid>
+                
                 <Grid item md={6} xs={12}>
                   <FormikControl
                     control="input"
@@ -86,6 +93,7 @@ const App = () => {
                     placeholder="Enter your Email Address"
                   />
                 </Grid>
+                
               </Grid>
               <Grid
                 item
